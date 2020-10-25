@@ -9,3 +9,8 @@ export 'package:refransehadabawy/widgets/Images.dart';
 export 'package:refransehadabawy/widgets/Text.dart';
 export 'package:location/location.dart';
 export 'package:refransehadabawy/files/animations.dart';
+export 'package:firebase_auth/firebase_auth.dart';
+export 'package:refransehadabawy/services/UserData.dart';
+export 'package:firebase_core/firebase_core.dart';
+export 'package:cloud_firestore/cloud_firestore.dart';
+export 'package:firebase_auth/firebase_auth.dart';

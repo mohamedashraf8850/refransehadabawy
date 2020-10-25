@@ -2,7 +2,7 @@ import 'package:refransehadabawy/files/exports.dart';
 
 Widget hadFild(
     {titleColor,
-      startspass,
+    startspass,
     controller,
     backColor,
     fBorderColor,
@@ -11,7 +11,7 @@ Widget hadFild(
     type,
     lable,
     hint,
-      enabled,
+    enabled,
     validator,
     suffixIcon,
     prefixIcon}) {
@@ -20,9 +20,9 @@ Widget hadFild(
         ? AutovalidateMode.onUserInteraction
         : AutovalidateMode.disabled,
     child: TextFormField(
-      enabled: enabled??true,
-      keyboardType: type??TextInputType.text,
-      obscureText: startspass??false,
+      enabled: enabled ?? true,
+      keyboardType: type ?? TextInputType.text,
+      obscureText: startspass ?? false,
       controller: controller,
       validator: validator,
       textAlign: TextAlign.left,

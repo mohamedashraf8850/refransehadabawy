@@ -16,6 +16,7 @@ String validatePassword(String value) {
   else
     return null;
 }
+
 String validateUser(String value) {
   Pattern pattern = r'^[a-zA-Z0-9]+$';
   RegExp regex = new RegExp(pattern);
@@ -24,6 +25,7 @@ String validateUser(String value) {
   else
     return null;
 }
+
 String validatePhone(String value) {
   Pattern pattern = r'(^(?:[+0]9)?[0-9]{10,12}$)';
   RegExp regex = new RegExp(pattern);

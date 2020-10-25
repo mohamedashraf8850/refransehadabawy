@@ -9,8 +9,8 @@ class AnimationPage extends PageRouteBuilder {
                 Animation<double> animation,
                 Animation<double> secondaryAnimation,
                 Widget child) {
-              animation = CurvedAnimation(
-                  parent: animation, curve: Curves.elasticIn);
+              animation =
+                  CurvedAnimation(parent: animation, curve: Curves.elasticIn);
               return ScaleTransition(
                 scale: animation,
                 child: child,
