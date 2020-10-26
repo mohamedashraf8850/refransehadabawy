@@ -17,6 +17,13 @@ String validatePassword(String value) {
     return null;
 }
 
+String validaterePassword({String value1, String value2}) {
+  if (value1 != value2)
+    return 'password does not match ';
+  else
+    return null;
+}
+
 String validateUser(String value) {
   Pattern pattern = r'^[a-zA-Z0-9]+$';
   RegExp regex = new RegExp(pattern);

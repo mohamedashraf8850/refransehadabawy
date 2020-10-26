@@ -29,7 +29,7 @@ class AuthService {
   }
 
   // sign in with email and password
-  Future signInWithEmailAndPassword(String email, String password) async {
+  Future signInWithEmailAndPassword({String email, String password}) async {
     try {
       UserCredential result = await _auth.signInWithEmailAndPassword(
           email: email, password: password);
@@ -42,14 +42,23 @@ class AuthService {
   }
 
   // register with email and password
-  Future registerWithEmailAndPassword(String email, String password) async {
+  Future registerWithEmailAndPassword(
+      {String email,
+      String password,
+      String name,
+      String phone,
+      String type}) async {
     try {
       UserCredential result = await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
       User user = result.user;
       // create a new document for the user with the uid
-      await DatabaseService(uid: user.uid)
-          .updateUserData('0', 'new crew member', 100);
+      await DatabaseService(uid: user.uid).saveUserData(
+          mail: email,
+          password: password,
+          name: name,
+          phone: phone,
+          type: type);
       return _userFromUser(user);
     } catch (error) {
       print(error.toString());
@@ -73,30 +82,40 @@ class DatabaseService {
   DatabaseService({this.uid});
 
   // collection reference
-  final CollectionReference brewCollection =
-      FirebaseFirestore.instance.collection('brews');
+  final CollectionReference usersCollection =
+      FirebaseFirestore.instance.collection('users');
 
-  Future<void> updateUserData(String sugars, String name, int strength) async {
-    return await brewCollection.doc(uid).set({
-      'sugars': sugars,
+  Future<void> saveUserData(
+      {String name,
+      String type,
+      String phone,
+      String mail,
+      String status,
+      String password}) async {
+    return await usersCollection.doc(uid).set({
       'name': name,
-      'strength': strength,
+      'uId': uid,
+      'type': type,
+      'phone': phone,
+      'mail': mail,
+      'status': 'online',
+      'password': password
     });
   }
-
-  // brew list from snapshot
-  List<Brew> _brewListFromSnapshot(QuerySnapshot snapshot) {
-    return snapshot.docs.map((doc) {
-      //print(doc.data);
-      return Brew(
-          name: doc.data()['name'] ?? '',
-          strength: doc.data()['strength'] ?? 0,
-          sugars: doc.data()['sugars'] ?? '0');
-    }).toList();
-  }
+  //
+  // // brew list from snapshot
+  // List<Brew> _brewListFromSnapshot(QuerySnapshot snapshot) {
+  //   return snapshot.docs.map((doc) {
+  //     //print(doc.data);
+  //     return Brew(
+  //         name: doc.data()['name'] ?? '',
+  //         strength: doc.data()['strength'] ?? 0,
+  //         sugars: doc.data()['sugars'] ?? '0');
+  //   }).toList();
+  // }
 
   // get brews stream
-  Stream<List<Brew>> get brews {
-    return brewCollection.snapshots().map(_brewListFromSnapshot);
-  }
+  // Stream<List<Brew>> get users {
+  //   return usersCollection.snapshots().map(_brewListFromSnapshot);
+  // }
 }

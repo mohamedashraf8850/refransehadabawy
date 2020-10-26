@@ -2,6 +2,7 @@ import 'package:refransehadabawy/files/exports.dart';
 
 Widget hadFild(
     {titleColor,
+    key,
     startspass,
     controller,
     backColor,
@@ -19,6 +20,7 @@ Widget hadFild(
     autovalidateMode: autovalidateMode == true
         ? AutovalidateMode.onUserInteraction
         : AutovalidateMode.disabled,
+    key: key,
     child: TextFormField(
       enabled: enabled ?? true,
       keyboardType: type ?? TextInputType.text,
