@@ -19,3 +19,13 @@ Widget netImage({souce, color, fit, height, width}) {
     width: width,
   );
 }
+
+Widget fileImage({souce, color, fit, height, width}) {
+  return Image.file(
+    souce,
+    color: color ?? null,
+    fit: fit,
+    height: height,
+    width: width,
+  );
+}

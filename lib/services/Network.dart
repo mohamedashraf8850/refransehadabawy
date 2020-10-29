@@ -97,25 +97,26 @@ class DatabaseService {
       'uId': uid,
       'type': type,
       'phone': phone,
+      'image': '',
       'mail': mail,
       'status': 'online',
       'password': password
     });
   }
-  //
-  // // brew list from snapshot
-  // List<Brew> _brewListFromSnapshot(QuerySnapshot snapshot) {
-  //   return snapshot.docs.map((doc) {
-  //     //print(doc.data);
-  //     return Brew(
-  //         name: doc.data()['name'] ?? '',
-  //         strength: doc.data()['strength'] ?? 0,
-  //         sugars: doc.data()['sugars'] ?? '0');
-  //   }).toList();
-  // }
 
-  // get brews stream
-  // Stream<List<Brew>> get users {
-  //   return usersCollection.snapshots().map(_brewListFromSnapshot);
-  // }
+  Future<void> EditUserData({String name, String phone, String image}) async {
+    return await usersCollection.doc(uid).update({
+      'name': name,
+      'phone': phone,
+    });
+  }
+
+  Future<void> EditUserDatawithImage(
+      {String name, String phone, String image}) async {
+    return await usersCollection.doc(uid).update({
+      'name': name,
+      'phone': phone,
+      'image': image,
+    });
+  }
 }

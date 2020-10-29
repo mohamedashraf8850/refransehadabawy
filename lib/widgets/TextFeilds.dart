@@ -22,11 +22,11 @@ Widget hadFild(
         : AutovalidateMode.disabled,
     key: key,
     child: TextFormField(
-      enabled: enabled ?? true,
       keyboardType: type ?? TextInputType.text,
       obscureText: startspass ?? false,
       controller: controller,
       validator: validator,
+      readOnly: !enabled,
       textAlign: TextAlign.left,
       decoration: InputDecoration(
         hintText: hint,
