@@ -26,7 +26,7 @@ Widget hadFild(
       obscureText: startspass ?? false,
       controller: controller,
       validator: validator,
-      readOnly: !enabled,
+      readOnly: !enabled ?? false,
       textAlign: TextAlign.left,
       decoration: InputDecoration(
         hintText: hint,
