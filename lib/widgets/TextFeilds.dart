@@ -15,7 +15,8 @@ Widget hadFild(
     enabled,
     validator,
     suffixIcon,
-    prefixIcon}) {
+    prefixIcon,
+    summit}) {
   return Form(
     autovalidateMode: autovalidateMode == true
         ? AutovalidateMode.onUserInteraction
@@ -26,6 +27,7 @@ Widget hadFild(
       obscureText: startspass ?? false,
       controller: controller,
       validator: validator,
+      onEditingComplete: summit,
       readOnly: !enabled ?? false,
       textAlign: TextAlign.left,
       decoration: InputDecoration(

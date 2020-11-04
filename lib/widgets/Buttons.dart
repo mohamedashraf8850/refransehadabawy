@@ -5,6 +5,7 @@ Widget hadButton({
   title,
   titleColor,
   bacColor,
+  double fontSize
 }) {
   return FlatButton(
       onPressed: action ??
@@ -21,7 +22,7 @@ Widget hadButton({
         textAlign: TextAlign.center,
         style: GoogleFonts.lato(
           color: titleColor ?? bColor,
-          fontSize: 25,
+          fontSize: fontSize??25,
           fontWeight: FontWeight.w700,
           fontStyle: FontStyle.italic,
         ),

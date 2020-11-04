@@ -34,6 +34,9 @@ dependencies:
   image_picker:
   firebase_storage:
   floating_action_bubble: 1.0.9
+  snapping_sheet: ^2.0.1
+  geolocator: ^3.0.1
+  latlong: ^0.6.1
 
 
 

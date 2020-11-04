@@ -3,7 +3,8 @@ import 'package:refransehadabawy/files/exports.dart';
 class AnimationPage extends PageRouteBuilder {
   final Widget widget;
   final Curve aniType;
-  AnimationPage({this.widget, this.aniType})
+  bool opaque;
+  AnimationPage({this.widget, this.aniType,this.opaque=true})
       : super(
             transitionDuration: Duration(seconds: 2),
             transitionsBuilder: (BuildContext context,
@@ -19,7 +20,7 @@ class AnimationPage extends PageRouteBuilder {
               );
             },
             pageBuilder: (BuildContext context, Animation<double> animation,
-                Animation<double> secondaryAnimation) {
+                Animation<double> secondaryAnimation, {opaque}) {
               return widget;
             });
 }
