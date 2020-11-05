@@ -32,7 +32,7 @@ dependencies:
   flutter_spinkit: ^4.1.2+1
   fluttertoast: ^7.1.1
   image_picker:
-  firebase_storage:
+  firebase_storage: ^4.0.1
   floating_action_bubble: 1.0.9
   snapping_sheet: ^2.0.1
   geolocator: ^3.0.1
