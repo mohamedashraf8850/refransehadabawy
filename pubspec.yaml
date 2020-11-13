@@ -37,6 +37,9 @@ dependencies:
   snapping_sheet: ^2.0.1
   geolocator: ^3.0.1
   latlong: ^0.6.1
+  shared_preferences: ^0.4.2
+  intl: ^0.16.1
+  firebase_messaging: ^7.0.3
 
 
 
