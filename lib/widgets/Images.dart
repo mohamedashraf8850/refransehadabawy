@@ -1,6 +1,6 @@
 import 'package:refransehadabawy/files/exports.dart';
 
-Widget asImage({souce, color, fit, height, width}) {
+Widget asImage({souce, color, fit, double height,double width}) {
   return Image.asset(
     souce,
     color: color ?? null,

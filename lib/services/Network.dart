@@ -47,7 +47,8 @@ class AuthService {
       String password,
       String name,
       String phone,
-      String type}) async {
+      String type,
+      String token}) async {
     try {
       UserCredential result = await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
@@ -58,6 +59,7 @@ class AuthService {
           password: password,
           name: name,
           phone: phone,
+          token: token,
           type: type);
       return _userFromUser(user);
     } catch (error) {
@@ -91,7 +93,8 @@ class DatabaseService {
       String phone,
       String mail,
       String status,
-      String password}) async {
+      String password,
+      String token}) async {
     return await usersCollection.doc(uid).set({
       'name': name,
       'uId': uid,
@@ -100,7 +103,8 @@ class DatabaseService {
       'image': '',
       'mail': mail,
       'status': 'online',
-      'password': password
+      'password': password,
+      'token': token
     });
   }
 

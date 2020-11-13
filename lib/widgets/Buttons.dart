@@ -1,7 +1,7 @@
 import 'package:refransehadabawy/files/exports.dart';
 
 Widget hadButton({
-  action,
+  VoidCallback action,
   title,
   titleColor,
   bacColor,
