@@ -3,7 +3,7 @@ import 'package:refransehadabawy/files/exports.dart';
 dynamic toastDialog(String title) {
   return Fluttertoast.showToast(
       msg: title,
-      toastLength: Toast.LENGTH_LONG,
+      toastLength: Toast.LENGTH_SHORT,
       gravity: ToastGravity.CENTER,
       timeInSecForIosWeb: 1,
       backgroundColor: bColor,

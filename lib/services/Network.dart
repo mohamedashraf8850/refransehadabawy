@@ -48,7 +48,8 @@ class AuthService {
       String name,
       String phone,
       String type,
-      String token}) async {
+      String token,
+      String status}) async {
     try {
       UserCredential result = await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
@@ -60,6 +61,7 @@ class AuthService {
           name: name,
           phone: phone,
           token: token,
+          status: status??null,
           type: type);
       return _userFromUser(user);
     } catch (error) {
@@ -94,7 +96,8 @@ class DatabaseService {
       String mail,
       String status,
       String password,
-      String token}) async {
+      String token,
+      String enabled}) async {
     return await usersCollection.doc(uid).set({
       'name': name,
       'uId': uid,
@@ -102,9 +105,10 @@ class DatabaseService {
       'phone': phone,
       'image': '',
       'mail': mail,
-      'status': 'online',
+      'status': status??'online',
       'password': password,
-      'token': token
+      'token': token,
+      'enabled':true
     });
   }
 
@@ -112,6 +116,11 @@ class DatabaseService {
     return await usersCollection.doc(uid).update({
       'name': name,
       'phone': phone,
+    });
+  }
+  Future<void> UpdateToken({String token}) async {
+    return await usersCollection.doc(uid).update({
+      'token': token,
     });
   }
 

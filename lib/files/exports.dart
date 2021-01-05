@@ -33,3 +33,4 @@ export 'package:refransehadabawy/widgets/Radio.dart';
 export 'package:refransehadabawy/services/TripData.dart';
 export 'package:shared_preferences/shared_preferences.dart';
 export 'package:http/http.dart';
+export 'package:refransehadabawy/services/TripPrice.dart';

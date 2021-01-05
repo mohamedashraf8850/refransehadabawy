@@ -7,8 +7,8 @@ class UserData {
 }
 
 class UData {
-  String uId, type, status, phone, name, mail, image;
-
+  String uId, type, status, phone, name, mail, image,password;
+bool enabled;
   UData({
     this.uId,
     this.mail,
@@ -17,6 +17,8 @@ class UData {
     this.phone,
     this.image,
     this.name,
+    this.enabled,
+    this.password
   });
 
   UData.fromSnapshot(DocumentSnapshot snapshot) {
@@ -27,5 +29,7 @@ class UData {
     this.status = snapshot.data()["status"];
     this.phone = snapshot.data()["phone"];
     this.name = snapshot.data()["name"];
+    this.enabled = snapshot.data()["enabled"];
+    this.password = snapshot.data()["password"];
   }
 }
