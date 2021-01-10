@@ -1,7 +1,7 @@
 const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 const { userRecordConstructor } = require('firebase-functions/lib/providers/auth');
-const { auth } = require('firebase-admin');
+const { auth, firestore } = require('firebase-admin');
 admin.initializeApp(functions.config().functions);
 
 exports.orderTrigger=functions.firestore.document('Trips/{tripId}').onCreate(
@@ -73,5 +73,32 @@ exports.enableUserByEmail = functions.https.onRequest(async (request , response)
         })
 })
 
+exports.getUsers = functions.https.onRequest(async (request , response)=> {
+    admin.firestore().collection('users').get().then((snapshot)=>{
+        let getCoffee = snapshot.docs.map((doc) => {
 
+            return doc.data();
+      });
+      return response.json(getCoffee);
+      //  return response.send(snapshot.docs['_fieldsProto']);
+}).catch(error => {
+    
+    response.status(500).send('Failed To get Users')
+})
+})
+
+exports.getTrips = functions.https.onRequest(async (request , response)=> {
+    const date = request.body.date;
+
+    admin.firestore().collection('Trips').get().then((snapshot)=>{
+        let getCoffee = snapshot.docs.map((doc) => {
+            return doc.data();
+      });
+      console.log(getCoffee)
+      return response.status(200).json(getCoffee);
+      }).catch(error => {
+    
+    response.status(500).json('Failed To Get Trips')
+})
+})
 
